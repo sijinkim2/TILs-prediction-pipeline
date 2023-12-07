@@ -1,0 +1,60 @@
+## Datamodule Args ###############################
+datamodule:
+######### for training: Image folder  ######################################
+  data_dir: "/home/skim/NAS01/Users/skim/dataset_lists/pathology_dataset_list"
+  file_path: "/home/skim/NAS01/Users/skim/dataset_lists/pathology_dataset_list"
+
+######### for training: slide folder list file ##########################
+  #train_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_filelists/train/nor00_train_lists.txt'
+  #val_list :  '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_filelists/val/nor00_val_lists.txt'
+
+######### for evalutation: img list file ##########################
+#  train_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/train/cvx00_train_lists.txt'
+#  val_list :  '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/val/cvx00_val_lists.txt'
+#  test_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/test/cvx00_test_abr.txt'
+  val_split: 0.2
+  test_split : 0.0
+  image_size: 256
+  batch_size: 32
+  seed: 42
+  num_workers: 8
+  image_ch: 3
+  shuffle: True
+  pin_memory: False
+  drop_last: False
+  gaussian_blur: True #", action="store_true", help="add gaussian blur")
+  jitter_strength: 1.0 #", type=float, default=1.0, help="jitter strength")
+## SSL Model Specific Args ########################
+model:
+  name: "SimCLR"
+  arch: "resnet18"
+  hidden_mlp: 2048
+  feat_dim: 128
+  first_conv: True #
+  maxpool1: True
+############# Pytorch Lighting Training Args ######
+pl_train:
+  temperature: 0.1
+  optimizer: "Adam"  ## adam or Lars, SGD
+  lr: 1.0e-3
+  lr_scheduler: "Cosine"  # Multistep, Cosine, Lambda, Cyclic
+  scheduler_gamma: 0.85
+  weight_decay: 1.0e-6
+  manual_seed: 1265
+
+###### Trainer ####################################
+trainer:
+  accelerator: "gpu"
+  gpus: [0]
+  strategy: "ddp"
+  accumulate_grad_batches: 1 # check datamodule.dataset.batch_size for effective batch size
+  max_epochs: 100
+  log_every_n_steps: 1
+  precision: 32
+###########################
+logging_params:
+  save_dir: "logs/"
+  name: "SimCLR_ResNet18"
+
+
+
