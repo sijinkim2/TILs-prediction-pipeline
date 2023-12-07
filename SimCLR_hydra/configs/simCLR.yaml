@@ -1,17 +1,9 @@
 ## Datamodule Args ###############################
 datamodule:
 ######### for training: Image folder  ######################################
-  data_dir: "/home/skim/NAS01/Users/skim/dataset_lists/pathology_dataset_list"
-  file_path: "/home/skim/NAS01/Users/skim/dataset_lists/pathology_dataset_list"
+  data_dir: "path"
+  file_path: "path"
 
-######### for training: slide folder list file ##########################
-  #train_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_filelists/train/nor00_train_lists.txt'
-  #val_list :  '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_filelists/val/nor00_val_lists.txt'
-
-######### for evalutation: img list file ##########################
-#  train_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/train/cvx00_train_lists.txt'
-#  val_list :  '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/val/cvx00_val_lists.txt'
-#  test_list : '/mnt/jcho/Databank/2_Pathology/in_house/cytology_cervix/train_val_evalists/test/cvx00_test_abr.txt'
   val_split: 0.2
   test_split : 0.0
   image_size: 256
