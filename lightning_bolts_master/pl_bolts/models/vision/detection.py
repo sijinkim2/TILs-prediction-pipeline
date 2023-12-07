@@ -112,7 +112,7 @@ class SemSegment(LightningModule):
         argmax_pred = np_pred.argmax(3)
 
         a = 1
-
+        '''
         if (batch_idx == 0) and self.after_training:
             for i in range(len(argmax_pred)):
                 argmax_pred0 = Lambda(lambda x: x[i, :, :])(argmax_pred)
@@ -125,10 +125,10 @@ class SemSegment(LightningModule):
                 bmp2.putpalette(pallette)
                 a = a + 1
                 bmp1.save(
-                '/home/skim/PycharmProjects/pythonProject/lightning-bolts-master/pl_bolts/models/vision/detection_pred/predicted/%s' % dst)
+                '/save1/%s' % dst)
                 bmp2.save(
-                    '/home/skim/PycharmProjects/pythonProject/lightning-bolts-master/pl_bolts/models/vision/detection_pred/ground_truth/%s' % dst)
-
+                    'save2/%s' % dst)
+        '''
 
         loss_val, bce_loss, sens, ftp, froc_score, ground_truth, predicted = Class_Wise_TIL_Detection_FROC(out, label)
 
