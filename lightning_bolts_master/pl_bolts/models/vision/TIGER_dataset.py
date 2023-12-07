@@ -31,8 +31,8 @@ class Train_Dataset(Dataset):
     the loss function when comparing with the output.
     """
 
-    IMAGE_PATH = os.path.join("/home/skim/Tiger_ROI_dataset/256/fold2/train_img")
-    MASK_PATH = os.path.join("/home/skim/Tiger_ROI_dataset/256/fold2/train_mask")
+    IMAGE_PATH = os.path.join("IMAGE_PATH")
+    MASK_PATH = os.path.join("MASK_PATH")
     def __init__(
         self,
         data_dir: str,
@@ -123,9 +123,9 @@ class val_Dataset(Dataset):
     """
 
     IMAGE_PATH = os.path.join(
-        "/home/skim/Tiger_ROI_dataset/256/fold2/val_img")
+        "IMAGE_PATH")
     MASK_PATH = os.path.join(
-        "/home/skim/Tiger_ROI_dataset/256/fold2/val_mask")
+        "MASK_PATH")
 
     def __init__(
             self,
@@ -212,9 +212,9 @@ class test_Dataset(Dataset):
         """
 
         IMAGE_PATH = os.path.join(
-            "/home/skim/Tiger_ROI_dataset/256/dataset_split/images/test/images")
+            "IMAGE_PATH")
         MASK_PATH = os.path.join(
-            "/home/skim/Tiger_ROI_dataset/256/dataset_split/masks/test/masks")
+            "MASK_PATH")
 
         def __init__(
                 self,
