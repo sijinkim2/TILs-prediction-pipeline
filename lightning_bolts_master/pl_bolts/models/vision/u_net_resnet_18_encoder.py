@@ -8,7 +8,7 @@ import torchvision.models as models
 import os
 
 
-MODEL_PATH = '/home/skim/SimCLR/resnet18/epoch=298-step=144117.ckpt'
+MODEL_PATH = 'pretrained_weight.ckpt'
 
 
 def load_encoder_weights(encoder, weights):
@@ -66,7 +66,7 @@ class Bridge(nn.Module):
         return self.bridge(x)
 
 
-class UpBlockForUNetWithResNet50(nn.Module):
+class UpBlockForUNetWithResNet18(nn.Module):
     """
     Up block that encapsulates one up-sampling step which consists of Upsample -> ConvBlock -> ConvBlock
     """
@@ -128,12 +128,12 @@ class UNetWithResnet18Encoder(nn.Module):
                 down_blocks.append(bottleneck)
         self.down_blocks = nn.ModuleList(down_blocks)
         self.bridge = Bridge(512, 512)
-        up_blocks.append(UpBlockForUNetWithResNet50(512, 256))
-        up_blocks.append(UpBlockForUNetWithResNet50(256, 128))
-        up_blocks.append(UpBlockForUNetWithResNet50(128, 64))
-        up_blocks.append(UpBlockForUNetWithResNet50(in_channels=128 + 64, out_channels=128,
+        up_blocks.append(UpBlockForUNetWithResNet18(512, 256))
+        up_blocks.append(UpBlockForUNetWithResNet18(256, 128))
+        up_blocks.append(UpBlockForUNetWithResNet18(128, 64))
+        up_blocks.append(UpBlockForUNetWithResNet18(in_channels=128 + 64, out_channels=128,
                                                     up_conv_in_channels=64, up_conv_out_channels=128))
-        up_blocks.append(UpBlockForUNetWithResNet50(in_channels=64 + 3, out_channels=64,
+        up_blocks.append(UpBlockForUNetWithResNet18(in_channels=64 + 3, out_channels=64,
                                                     up_conv_in_channels=128, up_conv_out_channels=64))
 
         self.up_blocks = nn.ModuleList(up_blocks)
