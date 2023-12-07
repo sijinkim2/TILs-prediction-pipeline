@@ -170,7 +170,7 @@ class SemSegment(LightningModule):
         # bmp.putpalette(pallette)
         # a = a + 1
         # bmp.save(
-        # '/home/skim/PycharmProjects/pythonProject/lightning-bolts-master/pl_bolts/models/vision/test_pred/%s' % dst)
+        # 'save/%s' % dst)
 
         # Dice_score
         # dice_loss = DiceBCELoss()
