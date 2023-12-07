@@ -121,7 +121,7 @@ class ResNet_Bottleneck_OS16(nn.Module):
         elif num_layers == 101:
             resnet = models.resnet101()
             # load pretrained model:
-            resnet.load_state_dict(torch.load("/home/skim/my-project/lib/python3.6/site-packages/pl_bolts/models/vision/deeplabv3/pretrained_models/resnet/resnet101-5d3b4d8f.pth"))
+            resnet.load_state_dict(torch.load("resnet101-5d3b4d8f.pth"))
             # remove fully connected layer, avg pool and layer5:
             self.resnet = nn.Sequential(*list(resnet.children())[:-3])
 
@@ -129,7 +129,7 @@ class ResNet_Bottleneck_OS16(nn.Module):
         elif num_layers == 152:
             resnet = models.resnet152()
             # load pretrained model:
-            resnet.load_state_dict(torch.load("/home/skim/my-project/lib/python3.6/site-packages/pl_bolts/models/vision/deeplabv3/pretrained_models/resnet/resnet152-b121ed2d.pth"))
+            resnet.load_state_dict(torch.load("resnet152-b121ed2d.pth"))
             # remove fully connected layer, avg pool and layer5:
             self.resnet = nn.Sequential(*list(resnet.children())[:-3])
 
@@ -210,7 +210,7 @@ class ResNet_BasicBlock_OS8(nn.Module):
 
         if num_layers == 18:
 
-            MODEL_PATH = "/home/skim/NAS01/Users/skim/model_save/self-supervised/SwAV/ResNet18/dataset_600000/batch2048/ImageNet_pretrained/checkpoints/epoch=270-step=65039.ckpt"
+            MODEL_PATH = "pretrained_weight.ckpt"
 
             resnet = models.resnet18(pretrained=False)
             state = torch.load(MODEL_PATH, map_location='cuda:0')
@@ -226,22 +226,10 @@ class ResNet_BasicBlock_OS8(nn.Module):
             num_blocks_layer_5 = 2
             print ("pretrained resnet, 18")
 
-            '''
-            #ImageNet pretrain
-            resnet = models.resnet18()
-            # load pretrained model:
-            resnet.load_state_dict(torch.load("/home/skim/my-project/lib/python3.6/site-packages/pl_bolts/models/vision/deeplabv3/pretrained_models/resnet/resnet18-5c106cde.pth"))
-            # remove fully connected layer, avg pool, layer4 and layer5:
-            self.resnet = nn.Sequential(*list(resnet.children())[:-4])
-            
-            num_blocks_layer_4 = 2
-            num_blocks_layer_5 = 2
-            print ("pretrained resnet, 18")
-            '''
         elif num_layers == 34:
             resnet = models.resnet34()
             # load pretrained model:
-            resnet.load_state_dict(torch.load("/home/skim/my-project/lib/python3.6/site-packages/pl_bolts/models/vision/deeplabv3/pretrained_models/resnet/resnet34-333f7ec4.pth"))
+            resnet.load_state_dict(torch.load("resnet34-333f7ec4.pth"))
             # remove fully connected layer, avg pool, layer4 and layer5:
             self.resnet = nn.Sequential(*list(resnet.children())[:-4])
 
