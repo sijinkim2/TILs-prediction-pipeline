@@ -15,20 +15,6 @@ from pl_bolts.models.self_supervised.simclr.transforms import SimCLRTrainDataTra
 
 
 class SimCLRDataModule(LightningDataModule):
-    """
-
-    Cervical cell image tr
-    ain, val and test dataloaders.
-
-     Example::
-
-        from datamodules.cervix_datamodule import CervixDataModule
-
-        dm = CervixDataModule(data_dir='./cytology_cervix/tile_imgs')
-        dm.setup()
-        show_img(dm.val_dataloader())
-
-    """
 
     name = "pathology"
 
